@@ -23,7 +23,6 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Area chart</h4>
-            <area-chart height="250"></area-chart>
           </div>
         </div>
       </div>
@@ -60,7 +59,7 @@
 <script lang="js">
 import lineChart from '../../components/charts/examples/lineChart'
 import barChart from '../../components/charts/examples/barChart'
-import areaChart from '../../components/charts/examples/areaChart'
+// import areaChart from '../../components/charts/examples/areaChart'
 import doughnutChart from '../../components/charts/examples/DoughnutChart'
 import pieChart from '../../components/charts/examples/pieChart'
 import scatterChart from '../../components/charts/examples/scatterChart'
@@ -69,7 +68,7 @@ export default {
   components: {
     lineChart,
     barChart,
-    areaChart,
+    // areaChart,
     doughnutChart,
     pieChart,
     scatterChart
