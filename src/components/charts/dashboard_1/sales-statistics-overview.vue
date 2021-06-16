@@ -12,7 +12,7 @@ export default {
       default: () => ['Jan 1', 'Jan 7', 'Jan 14', 'Jan 21', 'Jan 28', 'Feb 4', 'Feb 11', 'Feb 18']
     }
   },
-  data() {
+  data () {
     return {
       gradient: null,
       gradient2: null,
@@ -21,7 +21,7 @@ export default {
       label: []
     }
   },
-  mounted() {
+  mounted () {
     const promise1 = new Promise((resolve, reject) => {
       resolve(this.getLabels())
     })
@@ -100,12 +100,12 @@ export default {
     })
   },
   computed: {
-    getLabel() {
+    getLabel () {
       return this.getLabels()
     }
   },
   methods: {
-    async getLabels() {
+    async getLabels () {
       setTimeout(async function () {
         await axios.get('api/auth/web/dash')
           .then(res => {
@@ -120,7 +120,7 @@ export default {
           })
       }, 5000)
     },
-    async getLLogin() {
+    async getLLogin () {
       setTimeout(async function () {
         await axios.get('api/auth/web/dash')
           .then(res => {
@@ -129,7 +129,7 @@ export default {
           })
       }, 5000)
     },
-    async getJoined() {
+    async getJoined () {
       setTimeout(async function () {
         await axios.get('api/auth/web/dash')
           .then(res => {
