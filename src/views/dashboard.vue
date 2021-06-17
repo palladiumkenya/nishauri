@@ -17,7 +17,7 @@
               <div class='col-lg-3 col-md-6'>
                 <div class='d-flex'>
                   <div class='wrapper'>
-                    <h3 class='mb-0 font-weight-semibold'>{{u}}</h3>
+                    <h3 class='mb-0 font-weight-semibold'>{{ u }}</h3>
                     <h5 class='mb-0 font-weight-medium text-primary'>Clients Registered</h5>
                   </div>
                   <div class='wrapper my-auto ml-auto ml-lg-4'>
@@ -28,7 +28,7 @@
               <div class='col-lg-3 col-md-6 mt-md-0 mt-4'>
                 <div class='d-flex'>
                   <div class='wrapper'>
-                    <h3 class='mb-0 font-weight-semibold'>{{app}}</h3>
+                    <h3 class='mb-0 font-weight-semibold'>{{ app }}</h3>
                     <h5 class='mb-0 font-weight-medium text-primary'>Appointments pulled</h5>
                   </div>
                   <div class='wrapper my-auto ml-auto ml-lg-4'>
@@ -39,7 +39,7 @@
               <div class='col-lg-3 col-md-6 mt-md-0 mt-4'>
                 <div class='d-flex'>
                   <div class='wrapper'>
-                    <h3 class='mb-0 font-weight-semibold'>{{vl}}</h3>
+                    <h3 class='mb-0 font-weight-semibold'>{{ vl }}</h3>
                     <h5 class='mb-0 font-weight-medium text-primary'>VL Results Pulled</h5>
                   </div>
                   <div class='wrapper my-auto ml-auto ml-lg-4'>
@@ -50,7 +50,7 @@
               <div class='col-lg-3 col-md-6 mt-md-0 mt-4'>
                 <div class='d-flex'>
                   <div class='wrapper'>
-                    <h3 class='mb-0 font-weight-semibold'>{{eid}}</h3>
+                    <h3 class='mb-0 font-weight-semibold'>{{ eid }}</h3>
                     <h5 class='mb-0 font-weight-medium text-primary'>EID Results Pulled</h5>
                   </div>
                   <div class='wrapper my-auto ml-auto ml-lg-4'>
@@ -76,40 +76,19 @@
                   <div class="ml-lg-auto" id="sales-statistics-legend">
                     <div class="chartjs-legend">
                       <ul>
-                        <li><span style="background-color: #8862e0"></span>Date Registered</li>
-                        <li><span style="background-color: #19d895"></span>Last Login</li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <sales-statistics-overview class='mt-5' :height="170"></sales-statistics-overview>
+                <section class="charts">
+                  <h3>Usage Overview
+                    <p>Registrations and logins</p>
+                  </h3>
+                  <vue-highcharts :options="options" :height="170" :highcharts="Highcharts" ref="lineCharts"></vue-highcharts>
+                </section>
               </div>
             </div>
           </div>
-<!--          <div class='col-md-6 grid-margin stretch-card'>-->
-<!--            <div class='card'>-->
-<!--              <div class='card-body pb-0'>-->
-<!--                <div class='d-flex justify-content-between'>-->
-<!--                  <h4 class='card-title mb-0'>Total Revenue</h4>-->
-<!--                  <p class='font-weight-semibold mb-0'>+1.37%</p>-->
-<!--                </div>-->
-<!--                <h3 class='font-weight-medium mb-4'>184.42K</h3>-->
-<!--              </div>-->
-<!--              <total-revenue class='mt-n4' :height="90"></total-revenue>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class='col-md-6 grid-margin stretch-card'>-->
-<!--            <div class='card'>-->
-<!--              <div class='card-body pb-0'>-->
-<!--                <div class='d-flex justify-content-between'>-->
-<!--                  <h4 class='card-title mb-0'>Transaction</h4>-->
-<!--                  <p class='font-weight-semibold mb-0'>-2.87%</p>-->
-<!--                </div>-->
-<!--                <h3 class='font-weight-medium'>147.7K</h3>-->
-<!--              </div>-->
-<!--              <total-transaction class='mt-n3' :height="90"></total-transaction>-->
-<!--            </div>-->
-<!--          </div>-->
         </div>
       </div>
       <div class='col-md-4'>
@@ -153,7 +132,6 @@
 
 <script lang='js'>
 import statsLineGraph1 from '../components/charts/dashboard_1/stats-line-graph-1'
-import statsLineGraph2 from '../components/charts/dashboard_1/stats-line-graph-2'
 import statsLineGraph3 from '../components/charts/dashboard_1/stats-line-graph-3'
 import statsLineGraph4 from '../components/charts/dashboard_1/stats-line-graph-4'
 import salesStatisticsOverview from '../components/charts/dashboard_1/sales-statistics-overview'
@@ -165,6 +143,11 @@ import realtimeStatistics from '../components/charts/dashboard_1/realtime-statis
 import usersDoughnutChart from '../components/charts/dashboard_1/usersDoughnutChart'
 import JQuery from 'jquery'
 import axios from 'axios'
+import VueHighcharts from 'vue2-highcharts'
+import Exporting from 'highcharts/modules/exporting'
+import Highcharts from 'highcharts'
+
+Exporting(Highcharts)
 let $ = JQuery
 export default {
   name: 'dashboard',
@@ -174,12 +157,47 @@ export default {
       vl: 0,
       u: 0,
       eid: 0,
-      fac: 0
+      fac: 0,
+      options: {
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: 'Usage Overview'
+        },
+        xAxis: {
+          categories: []
+        },
+        yAxis: {
+          title: {
+            text: 'Number of clients'
+          }
+        },
+        tooltip: {
+          crosshairs: true,
+          shared: true
+        },
+        credits: {
+          enabled: false
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              radius: 4,
+              lineColor: '#666666',
+              lineWidth: 1
+            }
+          }
+        },
+        series: []
+      },
+      Highcharts: Highcharts,
+      chartd: []
     }
   },
   components: {
+    VueHighcharts,
     statsLineGraph1,
-    statsLineGraph2,
     statsLineGraph3,
     statsLineGraph4,
     salesStatisticsOverview,
@@ -192,8 +210,38 @@ export default {
   },
   mounted () {
     this.getNumbers()
+    this.load()
   },
   methods: {
+    load () {
+      let lineCharts = this.$refs.lineCharts
+      // charts.showLoading('loading');
+
+      // you also can use the delegateMethod()
+      lineCharts.delegateMethod('showLoading', 'Loading...')
+      setTimeout(() => {
+        lineCharts
+          .getChart()
+          .xAxis[0].setCategories(this.chartd.date)
+        lineCharts.addSeries({
+          name: 'Joined',
+          marker: {
+            symbol: 'circle'
+          },
+          color: '#8862e0',
+          data: this.chartd.joined
+        })
+        lineCharts.addSeries({
+          name: 'Last Login',
+          marker: {
+            symbol: 'circle'
+          },
+          color: '#19d895',
+          data: this.chartd.llogin
+        })
+        lineCharts.hideLoading()
+      }, 2000)
+    },
     toggleProBanner: function () {
       $('body').toggleClass('pro-banner-collapse')
     },
@@ -204,6 +252,7 @@ export default {
       this.u = a.data.reg_count
       this.fac = a.data.fac_count
       this.eid = a.data.eid_count
+      this.chartd = a.data.chart
     }
   }
 }
