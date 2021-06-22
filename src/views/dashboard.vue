@@ -96,30 +96,9 @@
           <div class='col-md-12 grid-margin'>
             <div class='card'>
               <div class='card-body'>
-                <h4 class='card-title mb-4'>World sellings</h4>
-                <usersDoughnutChart :height="200"></usersDoughnutChart>
+                <h4 class='card-title mb-6'>Registrations Per sub-county</h4>
+                <vue-highcharts :options="pieOptions" ref="pieChart"></vue-highcharts>
                 <div class='wrapper'>
-                  <div class='d-flex w-100 pt-2 mt-4'>
-                    <p class='mb-0 font-weight-semibold'>California</p>
-                    <div class='wrapper ml-auto d-flex align-items-center'>
-                      <p class='font-weight-semibold mb-0'>26,437</p>
-                      <p class='ml-1 mb-0'>26%</p>
-                    </div>
-                  </div>
-                  <div class='d-flex w-100 pt-2'>
-                    <p class='mb-0 font-weight-semibold'>Washington</p>
-                    <div class='wrapper ml-auto d-flex align-items-center'>
-                      <p class='font-weight-semibold mb-0'>3252</p>
-                      <p class='ml-1 mb-0'>64%</p>
-                    </div>
-                  </div>
-                  <div class='d-flex w-100 pt-2'>
-                    <p class='mb-0 font-weight-semibold'>Michigan</p>
-                    <div class='wrapper ml-auto d-flex align-items-center'>
-                      <p class='font-weight-semibold mb-0'>4,987</p>
-                      <p class='ml-1 mb-0'>30%</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -132,15 +111,9 @@
 
 <script lang='js'>
 import statsLineGraph1 from '../components/charts/dashboard_1/stats-line-graph-1'
+import statsLineGraph2 from '../components/charts/dashboard_1/stats-line-graph-2'
 import statsLineGraph3 from '../components/charts/dashboard_1/stats-line-graph-3'
 import statsLineGraph4 from '../components/charts/dashboard_1/stats-line-graph-4'
-import salesStatisticsOverview from '../components/charts/dashboard_1/sales-statistics-overview'
-import netProfit from '../components/charts/dashboard_1/net-Profit'
-import totalRevenue from '../components/charts/dashboard_1/total-revenue'
-import marketOverviewChart from '../components/charts/dashboard_1/market-overview-chart'
-import totalTransaction from '../components/charts/dashboard_1/total-transaction'
-import realtimeStatistics from '../components/charts/dashboard_1/realtime-statistics'
-import usersDoughnutChart from '../components/charts/dashboard_1/usersDoughnutChart'
 import JQuery from 'jquery'
 import axios from 'axios'
 import VueHighcharts from 'vue2-highcharts'
@@ -192,36 +165,56 @@ export default {
         series: []
       },
       Highcharts: Highcharts,
-      chartd: []
+      chartd: [],
+      pieOptions: {
+        chart: {
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45
+          }
+        },
+        title: {
+          text: 'Registrations per sub-county'
+        },
+        plotOptions: {
+          pie: {
+            // innerSize: 100,
+            // depth: 45
+          }
+        },
+        series: []
+      },
+      piedata: []
     }
   },
   components: {
     VueHighcharts,
     statsLineGraph1,
+    statsLineGraph2,
     statsLineGraph3,
-    statsLineGraph4,
-    salesStatisticsOverview,
-    netProfit,
-    totalRevenue,
-    marketOverviewChart,
-    totalTransaction,
-    realtimeStatistics,
-    usersDoughnutChart
+    statsLineGraph4
   },
   mounted () {
     this.getNumbers()
     this.load()
   },
+  watch: {
+    data (newVal) {
+      // this.chartOptions.series[0].data = newVal
+    }
+  },
   methods: {
     load () {
       let lineCharts = this.$refs.lineCharts
+      let pieChart = this.$refs.pieChart
       // charts.showLoading('loading');
 
       // you also can use the delegateMethod()
+      pieChart.delegateMethod('showLoading', 'Loading...')
       lineCharts.delegateMethod('showLoading', 'Loading...')
       setTimeout(() => {
-        lineCharts
-          .getChart()
+        lineCharts.getChart()
           .xAxis[0].setCategories(this.chartd.date)
         lineCharts.addSeries({
           name: 'Joined',
@@ -241,6 +234,12 @@ export default {
         })
         lineCharts.hideLoading()
       }, 2000)
+
+      setTimeout(() => {
+        pieChart.getChart()
+        pieChart.addSeries({name: 'No. of clients', data: this.piedata})
+        pieChart.hideLoading()
+      }, 2000)
     },
     toggleProBanner: function () {
       $('body').toggleClass('pro-banner-collapse')
@@ -253,6 +252,9 @@ export default {
       this.fac = a.data.fac_count
       this.eid = a.data.eid_count
       this.chartd = a.data.chart
+      // console.log()
+      this.piedata = a.data.county_data
+      // this.pieOptions.series[0].setData(a.data.county_data)
     }
   }
 }

@@ -29,7 +29,7 @@ Vue.use(Router)
 const router = new Router({
   linkActiveClass: 'active',
   scrollBehavior: () => ({ y: 0 }),
-  mode: '',
+  mode: 'history',
   routes: [{
     path: '/',
     redirect: '/dashboard',
