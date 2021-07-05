@@ -10,7 +10,7 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import VueGoodWizard from 'vue-good-wizard'
 import store from './store'
 import axios from 'axios'
-import VueHighcharts from 'vue-highcharts'
+// import VueHighcharts from 'vue-highcharts'
 
 require('./store/modules/subscriber')
 // eslint-disable-next-line
@@ -33,7 +33,7 @@ if (token) {
 Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2, options)
 Vue.use(VueGoodWizard)
-Vue.use(VueHighcharts)
+// Vue.use(VueHighcharts)
 
 Vue.component('vue-slide-bar', VueSlideBar)
 Vue.config.productionTip = false
