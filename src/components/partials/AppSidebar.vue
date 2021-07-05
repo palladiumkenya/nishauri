@@ -29,6 +29,20 @@
             </ul>
           </b-collapse>
         </li>
+        <li class="nav-item">
+          <span class="nav-link" v-b-toggle="'charts-dropdown'">
+            <i class="menu-icon typcn typcn-th-large-outline"></i>
+            <span class="menu-title">Chat</span>
+            <i class="menu-arrow"></i>
+          </span>
+          <b-collapse id="charts-dropdown">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/chat/">Chat</router-link>
+              </li>
+            </ul>
+          </b-collapse>
+        </li>
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link" v-b-toggle="'ui-basic'">-->
 <!--            <i class="menu-icon typcn typcn-coffee"></i>-->
@@ -45,20 +59,6 @@
 <!--              </li>-->
 <!--              <li class="nav-item">-->
 <!--                <router-link class="nav-link" to="/typography/">Typography</router-link>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </b-collapse>-->
-<!--        </li>-->
-<!--         <li class="nav-item">-->
-<!--          <span class="nav-link" v-b-toggle="'charts-dropdown'">-->
-<!--            <i class="menu-icon typcn typcn-th-large-outline"></i>-->
-<!--            <span class="menu-title">Charts</span>-->
-<!--            <i class="menu-arrow"></i>-->
-<!--          </span>-->
-<!--          <b-collapse id="charts-dropdown">-->
-<!--            <ul class="nav flex-column sub-menu">-->
-<!--              <li class="nav-item">-->
-<!--                <router-link class="nav-link" to="/chartjs/">Chart js</router-link>-->
 <!--              </li>-->
 <!--            </ul>-->
 <!--          </b-collapse>-->

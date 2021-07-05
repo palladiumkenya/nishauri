@@ -4,6 +4,7 @@ import store from '@/store'
 
 // Dashboard Components
 import dashboard from '../views/dashboard'
+import chat from '../views/chat'
 
 //  Widgets Components
 import mainView from '../mainView'
@@ -39,6 +40,14 @@ const router = new Router({
         path: '/dashboard',
         name: 'dashboard',
         component: dashboard,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: '/chat',
+        name: 'chat',
+        component: chat,
         meta: {
           requiresAuth: true
         }
