@@ -5,11 +5,12 @@ import store from '@/store'
 // Dashboard Components
 import dashboard from '../views/dashboard'
 import chat from '../views/chat'
+import userList from '../views/users_list'
 
 //  Widgets Components
 import mainView from '../mainView'
 
-import buttons from '../views/basic-elements/buttons'
+// import buttons from '../views/basic-elements/buttons'
 import dropdowns from '../views/basic-elements/dropdowns'
 import typography from '../views/basic-elements/typography'
 
@@ -53,9 +54,9 @@ const router = new Router({
         }
       },
       {
-        path: '/buttons',
-        name: 'buttons',
-        component: buttons,
+        path: '/clients-list',
+        name: 'User List',
+        component: userList,
         meta: {
           requiresAuth: true
         }

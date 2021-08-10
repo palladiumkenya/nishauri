@@ -43,6 +43,20 @@
             </ul>
           </b-collapse>
         </li>
+        <li class="nav-item">
+          <span class="nav-link" v-b-toggle="'list-dropdown'">
+            <i class="menu-icon typcn typcn-th-large-outline"></i>
+            <span class="menu-title">Clients List</span>
+            <i class="menu-arrow"></i>
+          </span>
+          <b-collapse id="list-dropdown">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/clients-list/">Client List</router-link>
+              </li>
+            </ul>
+          </b-collapse>
+        </li>
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link" v-b-toggle="'ui-basic'">-->
 <!--            <i class="menu-icon typcn typcn-coffee"></i>-->
