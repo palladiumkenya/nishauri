@@ -34,10 +34,6 @@
                     <button type="submit" class="btn btn-primary submit-btn btn-block">Login</button>
                   </div>
                   <div class="form-group d-flex justify-content-between">
-                    <div class="form-check form-check-flat mt-0">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked> Keep me signed in </label>
-                    </div>
                     <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
                   </div>
                 </form>
@@ -53,7 +49,7 @@
                   <a href="#">Terms</a>
                 </li>
               </ul>
-              <p class="footer-text text-center">copyright © 2019 Bootstrapdash. All rights reserved.</p>
+              <p class="footer-text text-center">copyright © 2021. All rights reserved.</p>
             </div>
           </div>
         </div>
