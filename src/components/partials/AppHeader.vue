@@ -66,7 +66,7 @@
               </template>
             </div>
           </b-dropdown-item>
-          <b-dropdown-item>  <a class="nav-link" @click.prevent="signOut">Sign out</a></b-dropdown-item>
+          <b-dropdown-item>  <a class="nav-link" @click="signOut">Sign out</a></b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <button class="navbar-toggler navbar-toggler-right align-self-center" type="button"
