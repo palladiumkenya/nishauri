@@ -44,15 +44,29 @@
           </b-collapse>
         </li>
         <li class="nav-item">
-          <span class="nav-link" v-b-toggle="'list-dropdown'">
+          <span class="nav-link" v-b-toggle="'partneradd-dropdown'">
             <i class="menu-icon typcn typcn-th-large-outline"></i>
             <span class="menu-title">Clients List</span>
+            <i class="menu-arrow"></i>
+          </span>
+          <b-collapse id="partneradd-dropdown">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/clients-list/">Client List</router-link>
+              </li>
+            </ul>
+          </b-collapse>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" v-b-toggle="'list-dropdown'">
+            <i class="menu-icon typcn typcn-th-large-outline"></i>
+            <span class="menu-title">Add Partner</span>
             <i class="menu-arrow"></i>
           </span>
           <b-collapse id="list-dropdown">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                <router-link class="nav-link" to="/clients-list/">Client List</router-link>
+                <router-link class="nav-link" to="/register/partner/">Add Partner</router-link>
               </li>
             </ul>
           </b-collapse>

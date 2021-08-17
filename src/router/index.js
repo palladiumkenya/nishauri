@@ -5,6 +5,7 @@ import store from '@/store'
 // Dashboard Components
 import dashboard from '../views/dashboard'
 import chat from '../views/chat'
+import addPartner from '../views/add_partner'
 import userList from '../views/users_list'
 
 //  Widgets Components
@@ -49,6 +50,14 @@ const router = new Router({
         path: '/chat',
         name: 'chat',
         component: chat,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: '/register/partner',
+        name: 'Add Partner',
+        component: addPartner,
         meta: {
           requiresAuth: true
         }
