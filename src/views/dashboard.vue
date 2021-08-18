@@ -224,14 +224,6 @@ export default {
           color: '#8862e0',
           data: this.chartd.joined
         })
-        lineCharts.addSeries({
-          name: 'Last Login',
-          marker: {
-            symbol: 'circle'
-          },
-          color: '#19d895',
-          data: this.chartd.llogin
-        })
         lineCharts.hideLoading()
       }, 2000)
 

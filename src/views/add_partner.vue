@@ -115,6 +115,15 @@ export default {
         .then(res => {
           console.log(res)
           alert(res.data.data.user)
+          this.form = {
+            msisdn: null,
+            f_name: '',
+            l_name: '',
+            password: '',
+            acc_level: 2,
+            initial_facility: null,
+            termsAccepted: true
+          }
         })
         .catch(err => console.log(err))
       // this.items = a.data
