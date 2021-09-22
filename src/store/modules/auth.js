@@ -33,8 +33,9 @@ export default {
           return dispatch('attempt', resp.data.auth_token)
         })
         .catch(err => {
-          return err
-          // console.log(err)
+          console.log(err.response.data)
+          alert(`There was an error! ${JSON.stringify(err.response.data)}`)
+          return err.response.data
         })
     },
     async attempt ({commit, state}, token) {

@@ -81,9 +81,9 @@ export default {
     async login () {
       this.signIn(this.form)
         .then(() => this.$router.replace({name: 'dashboard'}))
-        .catch(err =>
-          alert(`There was an error! ${err}`)
-        )
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
