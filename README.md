@@ -1,4 +1,4 @@
-# star-admin-pro-vue
+# Nishauri Dashboard
 
 > A Vue.js project
 
