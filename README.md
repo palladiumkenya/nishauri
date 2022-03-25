@@ -27,4 +27,10 @@ npm run e2e
 npm test
 ```
 
+
+## Docker set up
+    git clone https://github.com/palladiumkenya/nishauri.git(clone cicd branch)
+    cd nishauri
+    docker-compose up -d
+    You can now access the server at http://localhost:8000
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
