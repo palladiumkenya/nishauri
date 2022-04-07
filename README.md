@@ -29,7 +29,7 @@ npm test
 
 
 ## Docker set up
-    git clone https://github.com/palladiumkenya/nishauri.git(clone cicd branch)
+    git clone https://github.com/palladiumkenya/nishauri.git
     cd nishauri
     docker-compose up -d
     You can now access the server at http://localhost:8000
