@@ -26,7 +26,6 @@ npm run e2e
 # run all tests
 npm test
 ```
-
 ## Docker set up
     git clone https://github.com/palladiumkenya/nishauri.git
     cd nishauri
