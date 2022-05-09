@@ -1,7 +1,7 @@
 name: deploying ushauri_test instance
 on:
   push:
-    branches: [ cicd ]
+    branches: [ master ]
 jobs:
   build:
     name: Deploy
