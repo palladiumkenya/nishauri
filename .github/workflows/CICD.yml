@@ -1,0 +1,27 @@
+name: deploying ushauri_test instance
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.CICD_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            git config --global --add safe.directory /apps/github-workflows/mhealth-apps/nishauri/      
+            cd /apps/github-workflows/mhealth-apps/nishauri/
+            cp /apps/configs/nishauri/Dockerfile /apps/github-workflows/mhealth-apps/nishauri/
+            cp -r /apps/configs/nishauri/nginx /apps/github-workflows/mhealth-apps/nishauri/
+            git pull origin main
+            git status
+            docker build -t nishauritest:latest .
+            docker stop nishauritest
+            docker rm nishauritest
+            docker run -p 5490:443 -d --name=nishauritest --restart always nishauritest:latest
