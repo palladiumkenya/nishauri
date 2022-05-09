@@ -17,7 +17,10 @@ jobs:
           script: |
             git config --global --add safe.directory /apps/github-workflows/mhealth-apps/nishauri/      
             cd /apps/github-workflows/mhealth-apps/nishauri/
+            cp /apps/dockerApps/nishauri/Dockerfile /apps/github-workflows/mhealth-apps/nishauri/
             git pull origin main
             git status
             docker build -t nishauritest:latest .
+            docker stop nishauri
+            docker rm nishauri
             docker run -p 8005:80 -d --name=nishauritest --restart always nishauritest:latest
