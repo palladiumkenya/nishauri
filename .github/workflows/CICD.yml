@@ -21,6 +21,6 @@ jobs:
             git pull origin main
             git status
             docker build -t nishauritest:latest .
-            docker stop nishauri
-            docker rm nishauri
+            docker stop nishauritest
+            docker rm nishauritest
             docker run -p 8005:80 -d --name=nishauritest --restart always nishauritest:latest
