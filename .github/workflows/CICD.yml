@@ -24,4 +24,4 @@ jobs:
             docker build -t nishauritest:latest .
             docker stop nishauritest
             docker rm nishauritest
-            docker run -p 5490:443 -d --name=nishauritest --restart always nishauritest:latest
+            docker run -p 8000:443 -d --name=nishauritest --restart always nishauritest:latest
