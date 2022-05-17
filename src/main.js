@@ -22,7 +22,7 @@ const options = {
 }
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'https://nishauri-api.mhealthkenya.co.ke/'
+axios.defaults.baseURL = 'https://prod.kenyahmis.org:8100/'
 // axios.defaults.baseURL = 'http://127.0.0.1:8081/'
 Vue.prototype.$http = axios
 const token = localStorage.getItem('token')
