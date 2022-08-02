@@ -15,12 +15,13 @@ jobs:
           key: ${{ secrets.CICD_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            git config --global --add safe.directory /apps/github-workflows/mhealth-apps/nishauri/      
-            cd /apps/github-workflows/mhealth-apps/nishauri/
-            cp /apps/configs/nishauri/Dockerfile /apps/github-workflows/mhealth-apps/nishauri/
-            cp -r /apps/configs/nishauri/nginx /apps/github-workflows/mhealth-apps/nishauri/
-            git pull origin main
-            git status
+            cd /apps/github-workflows/mhealth-apps/
+            sudo rm -rf nishauri
+            sudo mkdir nishauri
+            sudo chown -R cicd2:cicd2 nishauri
+            git config --global --add safe.directory /apps/github-workflows/mhealth-apps/nishauri_api
+            cd nishauri
+            git clone -b main https://github.com/palladiumkenya/nishauri.git .
             docker build -t nishauritest:latest .
             docker stop nishauritest
             docker rm nishauritest
